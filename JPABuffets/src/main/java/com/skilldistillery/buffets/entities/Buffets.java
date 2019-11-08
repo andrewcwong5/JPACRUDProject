@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class buffet {
+public class Buffets {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -28,7 +28,7 @@ public class buffet {
 		this.name = name;
 	}
 
-	public buffet() {
+	public Buffets() {
 		super();
 	}
 	@Override

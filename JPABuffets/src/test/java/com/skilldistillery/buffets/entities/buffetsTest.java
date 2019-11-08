@@ -15,37 +15,39 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class buffetsTest {
-	private static EntityManagerFactory emf;
-	private EntityManager em;
-	private buffet buffet;
-	
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("Buffets");
-	}
 
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-		emf.close();
-	}
+		private static EntityManagerFactory emf;
+		private EntityManager em;
+		private Buffets buffet;
+		
+		@BeforeAll
+		static void setUpBeforeClass() throws Exception {
+				emf = Persistence.createEntityManagerFactory("Buffets");
+		}
 
-	@BeforeEach
-	void setUp() throws Exception {
-		em = emf.createEntityManager();
-				buffet = em.find(buffet.class, 1);
-	}
+		@AfterAll
+		static void tearDownAfterClass() throws Exception {
+			emf.close();
+		}
 
-	@AfterEach
-	void tearDown() throws Exception {
-		em.close();
-		buffet=null;
-	}
+		@BeforeEach
+		void setUp() throws Exception {
+			em = emf.createEntityManager();
+			buffet = em.find(Buffets.class, 1);
+		}
 
-	@Test
-	@DisplayName("test functionality")
-	void test() {
-		assertNotNull(buffet);
-		assertEquals("Eater", buffet.getName());
-	}
+		@AfterEach
+		void tearDown() throws Exception {
+			em.close();
+			buffet=null;
+		}
+
+		@Test
+		@DisplayName("test functionality")
+		void test() {
+			assertNotNull(buffet);
+			assertEquals("Eater", buffet.getName());
+		}
+
 
 }
