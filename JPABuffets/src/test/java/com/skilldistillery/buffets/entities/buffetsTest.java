@@ -47,6 +47,7 @@ class buffetsTest {
 		void test() {
 			assertNotNull(buffet);
 			assertEquals("Eater", buffet.getName());
+//			assertEquals("")
 		}
 
 

@@ -23,6 +23,11 @@ DROP TABLE IF EXISTS `buffets` ;
 CREATE TABLE IF NOT EXISTS `buffets` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
+  `address` VARCHAR(45) NULL,
+  `phone` VARCHAR(45) NULL,
+  `lunch_price` VARCHAR(45) NULL,
+  `dinner_price` VARCHAR(45) NULL,
+  `type` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -42,7 +47,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `buffets`;
-INSERT INTO `buffets` (`id`, `name`) VALUES (1, 'Eater');
+INSERT INTO `buffets` (`id`, `name`, `address`, `phone`, `lunch_price`, `dinner_price`, `type`) VALUES (1, 'Eater', NULL, NULL, NULL, NULL, NULL);
 
 COMMIT;
 

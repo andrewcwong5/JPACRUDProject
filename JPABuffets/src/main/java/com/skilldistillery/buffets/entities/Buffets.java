@@ -11,6 +11,10 @@ public class Buffets {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	private String address;
+	private String phone;
+	private double lunchPrice;
+	
 
 	public int getId() {
 		return id;
