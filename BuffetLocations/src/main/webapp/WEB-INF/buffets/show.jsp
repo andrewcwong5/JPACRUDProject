@@ -10,11 +10,11 @@
 </head>
 <body>
 <h3>Show buffet by ID</h3>
-	<form action= "getBuffet.do" method="GET"
+	<form action= "getBuffet.do" method="GET">
 	Buffet ID: <input> type="text"</form> name="bid"
 	
 	<div>
-		<h5>${buffet.name}(${film.address})</h5>
+		<h5>${buffet.name}(${buffet.address})</h5>
 		<p>${buffet.type}</p>
 	</div>
 </body>

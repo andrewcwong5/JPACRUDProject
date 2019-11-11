@@ -10,6 +10,7 @@
 
 	<!-- class definitions -->
 	<class>com.skilldistillery.buffets.entities.buffet</class>
+	<class>com.skilldistillery.buffets.entities.Buffets</class>
 
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/buffets?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=MST" />

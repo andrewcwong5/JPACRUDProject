@@ -1,6 +1,6 @@
 package com.skilldistillery.buffets.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
@@ -47,7 +47,7 @@ class buffetsTest {
 		void test() {
 			assertNotNull(buffet);
 			assertEquals("Eater", buffet.getName());
-//			assertEquals("")
+//			assertEquals("5.00", buffet.getLunchPrice());
 		}
 
 
