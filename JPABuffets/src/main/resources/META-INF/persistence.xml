@@ -9,7 +9,6 @@
     </provider>
 
 	<!-- class definitions -->
-	<class>com.skilldistillery.buffets.entities.buffet</class>
 	<class>com.skilldistillery.buffets.entities.Buffets</class>
 
     <properties>

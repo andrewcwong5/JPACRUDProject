@@ -32,7 +32,7 @@ public class BuffetDAOJpaImpl implements BuffetDAO{
 		for (Buffets buffet : buffets) {
 			System.out.println(buffet);
 		}
-		return null;
+		return buffets;
 	}
 
 	@Override
