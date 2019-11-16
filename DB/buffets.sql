@@ -62,7 +62,7 @@ START TRANSACTION;
 USE `buffets`;
 INSERT INTO `buffets` (`id`, `name`, `address`, `phone`, `lunch_price`, `dinner_price`, `type`) VALUES (1, 'Eater', '123 Fake Street', '(555) 123-4567', '5.00', '10.00', 'Food');
 INSERT INTO `buffets` (`id`, `name`, `address`, `phone`, `lunch_price`, `dinner_price`, `type`) VALUES (2, 'Ichiban Japanese Buffet', '9271 Park Meadows Dr', '(303) 799-9888', '18.95', '33.95', 'Japanese, Sushi Bars');
-INSERT INTO `buffets` (`id`, `name`, `address`, `phone`, `lunch_price`, `dinner_price`, `type`) VALUES (3, 'Hibachi Grill and Buffet', '1026 S Sable Blvd, Aurora CO 80012', '(303) 337-4264', '(303) 337-4264', '12.99', 'Asian Fusion, Teppanyaki');
+INSERT INTO `buffets` (`id`, `name`, `address`, `phone`, `lunch_price`, `dinner_price`, `type`) VALUES (3, 'Hibachi Grill and Buffet', '1026 S Sable Blvd, Aurora CO 80012', '(303) 337-4264', '8.49', '12.99', 'Asian Fusion, Teppanyaki');
 
 COMMIT;
 

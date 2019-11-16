@@ -5,13 +5,13 @@ import java.util.List;
 import com.skilldistillery.buffets.entities.Buffets;
 
 public interface BuffetDAO {
-	public Buffets findById(int id);
-	public List<Buffets> findAll();
 	
-	public boolean createBuffet(Buffets buffet);		//C
-	public Buffets getBuffet(int id);					//R
 	
-	public int bulkUpdate(String oldFn, String newFn);	//U
+	public Buffets createBuffet(Buffets buffet);		//C
+	public Buffets findById(int id);					//R
+	
+	Buffets updateBuffet(int id, Buffets buffet);		//U
 	public boolean deleteBuffet(int id);				//D
 	
+	public List<Buffets> findAll();
 }

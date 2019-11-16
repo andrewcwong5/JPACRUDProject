@@ -28,37 +28,47 @@ public class BuffetController {
 //		BuffetDAOJpalmpl.List<Buffets> findAll();
 		mv.setViewName("WEB-INF/index.jsp");
 		return mv;
-		// return "index"; // if using a ViewResolver.
 	}
 
 	@RequestMapping(path = "getBuffet.do", method = RequestMethod.GET)
 	public ModelAndView getBuffet(@RequestParam("id") int id) {
 		ModelAndView mv = new ModelAndView();
-
 		Buffets buffet = buffetDAO.findById(id);
-
 		mv.addObject("buffet", buffet);
 		mv.setViewName("WEB-INF/buffets/show.jsp");
 
 		return mv;
 	}
-
-	// WHEN A Buffet IS ADDED THIS WILL ROUTE THE USER TO THE SEARCH PAGE WITH THE
-	// INPUT THEY PUT IN.
-	@RequestMapping(path = "add.do", method = RequestMethod.POST)
-	public ModelAndView addBuffet(Buffets buffet) {
-		boolean buffetAdd = buffetDAO.createBuffet(buffet);
+	@RequestMapping(path = "list.do", method = RequestMethod.GET)
+	public ModelAndView findAll() {
 		ModelAndView mv = new ModelAndView();
-		if (buffetAdd) {
-			mv.addObject("result", buffet);
-			mv.setViewName("WEB-INF/updateSuccessful.jsp");
-		} else {
-			mv.setViewName("WEB-INF/updateNotSuccessful.jsp");
-		}
+		List<Buffets> buffets = buffetDAO.findAll();   
+		mv.setViewName("WEB-INF/buffets/show.jsp");
+		mv.addObject("buffets", buffets);
 		return mv;
 	}
+	// List
+//	String query = "SELECT b FROM Buffets b";
+//	List<Buffets> results =
+//	  em.createQuery(query, buffet.class)
+//	    .getResultList();
 
-	// WHEN Buffet IS DELETED IT WILL REDIRECT TO A RESPECTIVE SUCCESS PAGE.
+	
+	@RequestMapping(path = "add.do", method = RequestMethod.POST)
+	public ModelAndView createBuffet(@RequestParam Buffets buffet) {
+		Buffets addBuffet = buffetDAO.createBuffet(buffet);
+		ModelAndView mv = new ModelAndView();
+			mv.addObject("buffet", buffet);
+			mv.setViewName("WEB-INF/buffets/updatesuccessful.jsp");
+		return mv;
+	}
+	@RequestMapping(path = "update.do", params = "buffetID", method = RequestMethod.POST)
+	public ModelAndView updateBuffet(int buffetId, Buffets buffet) {
+		Buffets updateBuffet = buffetDAO.updateBuffet(buffetId, buffet);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("buffet", updateBuffet);
+		return mv;
+	}
 	@RequestMapping(path = "delete.do", params = "buffetIdDelete", method = RequestMethod.POST)
 	public ModelAndView deleteBuffet(Buffets buffet, int buffetIdDelete) {
 		boolean buffetDelete = buffetDAO.deleteBuffet(buffetIdDelete);
@@ -66,7 +76,7 @@ public class BuffetController {
 											// successful.
 		ModelAndView mv = new ModelAndView();
 		if (buffetDelete) {
-			mv.setViewName("WEB-INF/updateSuccessful.jsp");
+			mv.setViewName("WEB-INF/buffets/updateSuccessful.jsp");
 			mv.addObject("result", buffet);
 		} else {
 			mv.setViewName("WEB-INF/updateNotSuccessful.jsp");

@@ -27,54 +27,68 @@ public class BuffetDAOJpaImpl implements BuffetDAO{
 	@Override
 	public List<Buffets> findAll() {
 		String jpql = "SELECT f FROM buffets f";
+		return em.createQuery(jpql, Buffets.class).getResultList();
 		
-		List<Buffets> buffets = em.createQuery(jpql, Buffets.class).getResultList();
-		for (Buffets buffet : buffets) {
-			System.out.println(buffet);
-		}
-		return buffets;
+//		List<Buffets> buffets = em.createQuery(jpql, Buffets.class).getResultList();
+//		for (Buffets buffet : buffets) {
+//			System.out.println(buffet);
+//		}
+//		return buffets;
 	}
-
+	
 	@Override
-	public boolean createBuffet(Buffets buffet) {
+	public Buffets createBuffet(Buffets buffet) {
         em.getTransaction().begin();
         em.persist(buffet);
         em.flush();
         em.getTransaction().commit();
         em.close();
-		return false;
+        return buffet;
 	}
-
 	@Override
-	public Buffets getBuffet(int id) {
-		 return em.find(Buffets.class, id);
+	public Buffets updateBuffet(int id, Buffets buffet) {
+		Buffets updated = em.find(Buffets.class, id);
+		updated.setName(buffet.getName());
+		updated.setAddress(buffet.getAddress());
+		updated.setPhone(buffet.getPhone());
+		updated.setLunchPrice(buffet.getLunchPrice());
+		updated.setDinnerPrice(buffet.getDinnerPrice());
+		updated.setType(buffet.getType());
+		
+		 // actually make changes
+		em.flush();
+		return updated;
+		
 	}
-
-	@Override
-	public int bulkUpdate(String oldFn, String newFn) {
-		String updateJpql = "UPDATE Buffets buffet SET buffet.name = :newName WHERE buffet.name = :oldName";
-        EntityManager em = emf.createEntityManager();
         
-        em.getTransaction().begin();
-        
-        em.flush();   // flush pending changes to the database
-        em.clear();   // clean up current persistence context
-        
-        int numChanged = em.createQuery(updateJpql)
-           .setParameter("newFn",  newFn)
-           .setParameter("oldFn",  oldFn)
-           .executeUpdate();
-        
-        em.getTransaction().commit();
-        return numChanged;
-	}
+//     // open a transaction
+//        em.getTransaction().begin();
+//
+//        // create a "detached" customer entity
+//        Customer detachedCustomer = new Customer();
+//
+//        // retrieve a "managed" customer entity
+//        Customer managedCustomer = em.find(Customer.class, 1);
+//
+//        // update the values of the detached entity
+//        detachedCustomer.setFirstName("Nope");
+//        detachedCustomer.setLastName("Not Gonna Happen");
+//
+//        // update the values of the managed entity
+//        managedCustomer.setFirstName("Will Update");
+//        managedCustomer.setLastName("On Commit");
+//
+//        // actually make changes
+//        em.getTransaction().commit();
+//        // -> the detached entity's changes were not saved
+//        // -> the managed entity's changes HAVE been saved
 
 	@Override
 	public boolean deleteBuffet(int id) {
 		boolean success = false;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        // find managed address to remove
+        // find managed buffet to remove
         Buffets buffet = em.find(Buffets.class, id);
         if (buffet != null) {
             em.remove(buffet);
@@ -83,5 +97,6 @@ public class BuffetDAOJpaImpl implements BuffetDAO{
         em.getTransaction().commit();
         return success;
 	}
+
 
 }
