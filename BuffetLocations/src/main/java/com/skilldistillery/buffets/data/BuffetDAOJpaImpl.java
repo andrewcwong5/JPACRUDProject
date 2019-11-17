@@ -48,6 +48,7 @@ public class BuffetDAOJpaImpl implements BuffetDAO{
 	@Override
 	public Buffets updateBuffet(int id, Buffets buffet) {
 		Buffets updated = em.find(Buffets.class, id);
+		updated.setId(buffet.getId());
 		updated.setName(buffet.getName());
 		updated.setAddress(buffet.getAddress());
 		updated.setPhone(buffet.getPhone());
@@ -56,7 +57,7 @@ public class BuffetDAOJpaImpl implements BuffetDAO{
 		updated.setType(buffet.getType());
 		
 		 // actually make changes
-		em.merge(buffet);
+		em.merge(updated);
 		return updated;
 		
 	}

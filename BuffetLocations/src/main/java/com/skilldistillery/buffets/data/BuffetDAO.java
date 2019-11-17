@@ -10,8 +10,8 @@ public interface BuffetDAO {
 	public Buffets createBuffet(Buffets buffet);		//C
 	public Buffets findById(int id);					//R
 	
-	Buffets updateBuffet(int id, Buffets buffet);		//U
-	public boolean deleteBuffet(Buffets buffet);				//D
+	Buffets updateBuffet(int id, Buffets buffet);	//U
+	public boolean deleteBuffet(Buffets buffet);		//D
 	
 	public List<Buffets> findAll();
 }

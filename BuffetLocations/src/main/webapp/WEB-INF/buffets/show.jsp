@@ -37,8 +37,8 @@
 	<h3>Update currently viewed Buffet ${buffet.id}</h3>
 	
 			<form action="update.do" method="POST">
-				<input type="hidden" name="BuffetId" value="${buffet.id}"> Name <input
-					class="form-control" type="text" name="name" value="${buffet.name}"
+				<input type="hidden" name="id" value="${buffet.id}"> 
+				Name <input class="form-control" type="text" name="name" value="${buffet.name}"
 					required><br> Address <input class="form-control"
 					type="text" name="address" value="${buffet.address}"><br>
 				Phone <input class="form-control" type="text" name="Phone"

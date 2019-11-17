@@ -62,9 +62,9 @@ public class BuffetController {
 			mv.setViewName("WEB-INF/buffets/show.jsp");
 		return mv;
 	}
-	@RequestMapping(path = "update.do", params = "buffetID", method = RequestMethod.POST)
-	public ModelAndView updateBuffet(int buffetId, Buffets buffet) {
-		Buffets updateBuffet = buffetDAO.updateBuffet(buffetId, buffet);
+	@RequestMapping(path = "update.do", method = RequestMethod.POST)
+	public ModelAndView updateBuffet(int id, Buffets buffet) {
+		Buffets updateBuffet = buffetDAO.updateBuffet(id, buffet);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("buffet", updateBuffet);
 		mv.setViewName("WEB-INF/buffets/show.jsp");
