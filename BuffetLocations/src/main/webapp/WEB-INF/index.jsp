@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +14,6 @@
   Buffet ID: <input type="text" name="id" />
   <input type="submit" value="Show Buffet" />
 </form>
-
-<form action="getBuffet.do" method="GET">
-  Buffet ID: <input type="text" name="id" />
-  <input type="submit" value="Show Buffet" />
-  </form>
   
   <div> 
   </div>
@@ -33,5 +29,20 @@
 		<input type="submit" value="Add Buffet">
 		
 </form>
+
+<br>
+<br>
+<br>
+
+<%-- <form action="list.do" method="GET">
+		List all buffets: <input type="submit" value="Display">
+	</form>
+	<c:if test="${not empty buffets}">
+        <ul>
+            <c:forEach var="buffet" items="${buffets}">
+                <li><a href="getBuffet.do?id=${buffet.id}">${buffet.name} ${buffet.address}</a></li>
+            </c:forEach>
+        </ul>
+    </c:if> --%>
 </body>
 </html>

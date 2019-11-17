@@ -52,6 +52,7 @@
 				<input class="btn btn-outline-success" type="submit" value="Submit"><br>
 			</form>
 	
+	<!-- ADD FORM -->
 	<h3>Add a buffet</h3>
 	<form action="add.do" method="POST">
 					Name: <input type="text" name ="name" required="required"/><br>
@@ -115,43 +116,6 @@
 					</a></li>
 					</c:forEach>
 				</ul>
- 
-	<!-- BOTTOM BUTTONS TO EDIT OR DELETE -->
-	<div class="text-center">
-		<div class="btn-group">
-			<form action="delete.do" method="POST" class="bottom__buttons">
-				<input type="hidden" name="filmIdDelete" value="${buffet.id }">
-				<input class="btn btn-secondary" type="submit" value="Delete buffet">
-			</form>
-			<div>
-				<button class="btn btn-secondary bottom__buttons" type="button"
-					data-toggle="collapse"
-					data-target="#collapseUpdateFilm${buffet.id}" aria-expanded="false"
-					aria-controls="collapseExample">Update buffet</button>
-			</div>
-		</div>
-	</div>
-
-	<!-- UPDATE FORM -->
-	<div class="collapse" id="collapseUpdateFilm${buffet.id}">
-		<div class="card card-body">
-			<form action="update.do" method="POST">
-				<input type="hidden" name="id" value="${buffet.id}"> Name <input
-					class="form-control" type="text" name="name" value="${buffet.name}"
-					required><br> Address <input class="form-control"
-					type="text" name="address" value="${buffet.address}"><br>
-				Phone <input class="form-control" type="text" name="Phone"
-					value="${buffet.phone}"><br> Lunch Price<input
-					class="form-control" type="number" name="lunchPrice" min="0"
-					max="1000" value="${buffet.lunchPrice}"><br>
-				Dinner Price<input class="form-control" type="number"
-					name="dinnerPrice" min="0" max="2000" value="${buffet.dinnerPrice}"
-					required><br> Type<input class="form-control"
-					type="text" name="type" value="${buffet.type}" ><br>
-				<input class="btn btn-outline-success" type="submit" value="Submit"><br>
-			</form>
-		</div>
-	</div>
 	  --%>
 	
 </body>

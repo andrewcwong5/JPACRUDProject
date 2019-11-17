@@ -44,7 +44,7 @@ public class BuffetController {
 		ModelAndView mv = new ModelAndView();
 		List<Buffets> buffets = buffetDAO.findAll();   
 		mv.addObject("buffets", buffets);
-		mv.setViewName("WEB-INF/buffets/show.jsp");
+		mv.setViewName("WEB-INF/index.jsp");
 		return mv;
 	}
 	// List
@@ -76,7 +76,7 @@ public class BuffetController {
 		Buffets buffet = buffetDAO.findById(id);
 		boolean buffetDelete = buffetDAO.deleteBuffet(buffet);
 		if (buffetDelete) {
-			mv.addObject("buffet", buffetDelete);
+			mv.addObject("buffet", id);
 			mv.setViewName("WEB-INF/index.jsp");
 		} else {
 			mv.setViewName("WEB-INF/updateNotSuccessful.jsp");
