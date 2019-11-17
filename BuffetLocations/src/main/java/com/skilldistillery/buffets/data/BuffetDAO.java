@@ -11,7 +11,7 @@ public interface BuffetDAO {
 	public Buffets findById(int id);					//R
 	
 	Buffets updateBuffet(int id, Buffets buffet);		//U
-	public boolean deleteBuffet(int id);				//D
+	public boolean deleteBuffet(Buffets buffet);				//D
 	
 	public List<Buffets> findAll();
 }

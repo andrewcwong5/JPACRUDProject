@@ -15,7 +15,7 @@ import com.skilldistillery.buffets.entities.Buffets;
 @Transactional
 @Service
 public class BuffetDAOJpaImpl implements BuffetDAO{
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("Buffets");
+	// EntityManagerFactory emf = Persistence.createEntityManagerFactory("Buffets");
 	@PersistenceContext
 	private EntityManager em;
 	
@@ -27,22 +27,22 @@ public class BuffetDAOJpaImpl implements BuffetDAO{
 	@Override
 	public List<Buffets> findAll() {
 		String jpql = "SELECT f FROM buffets f";
-		return em.createQuery(jpql, Buffets.class).getResultList();
+//		return em.createQuery(jpql, Buffets.class).getResultList();
 		
-//		List<Buffets> buffets = em.createQuery(jpql, Buffets.class).getResultList();
+		List<Buffets> buffets = em.createQuery(jpql, Buffets.class).getResultList();
 //		for (Buffets buffet : buffets) {
 //			System.out.println(buffet);
 //		}
-//		return buffets;
+		return buffets;
 	}
 	
 	@Override
 	public Buffets createBuffet(Buffets buffet) {
-        em.getTransaction().begin();
+//        em.getTransaction().begin();
         em.persist(buffet);
         em.flush();
-        em.getTransaction().commit();
-        em.close();
+//        em.getTransaction().commit();
+//        em.close();
         return buffet;
 	}
 	@Override
@@ -56,7 +56,7 @@ public class BuffetDAOJpaImpl implements BuffetDAO{
 		updated.setType(buffet.getType());
 		
 		 // actually make changes
-		em.flush();
+		em.merge(buffet);
 		return updated;
 		
 	}
@@ -84,17 +84,17 @@ public class BuffetDAOJpaImpl implements BuffetDAO{
 //        // -> the managed entity's changes HAVE been saved
 
 	@Override
-	public boolean deleteBuffet(int id) {
-		boolean success = false;
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        // find managed buffet to remove
-        Buffets buffet = em.find(Buffets.class, id);
-        if (buffet != null) {
+	public boolean deleteBuffet(Buffets buffet) {
+		boolean success = true;
+////        EntityManager em = emf.createEntityManager();
+//        em.getTransaction().begin();
+//        // find managed buffet to remove
+//        Buffets buffet = em.find(Buffets.class, id);
+//        if (buffet != null) {
             em.remove(buffet);
-        }
-        success = ! em.contains(buffet); 
-        em.getTransaction().commit();
+//        }
+//        success = ! em.contains(buffet); 
+//        em.getTransaction().commit();
         return success;
 	}
 

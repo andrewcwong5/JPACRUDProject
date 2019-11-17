@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Update not successful</title>
 </head>
 <body>
-Sorry, Could not add buffet
+<p>Sorry, Could not update buffet ${buffet.id}</p>
 </body>
 </html>

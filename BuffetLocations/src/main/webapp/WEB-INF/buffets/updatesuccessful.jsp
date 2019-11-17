@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Buffet Added</title>
+<title>Buffet updated</title>
 </head>
 <body>
+<form action="getBuffet.do" method="GET">
+  Buffet ID: <input type="text" name="id" />
+  <input type="submit" value="Show Buffet" />
+</form>
 <div>
 
 		<h5>${buffet.name}(${buffet.address})</h5>
